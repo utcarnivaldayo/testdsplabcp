@@ -2,7 +2,7 @@
 import Highcharts from 'https://code.highcharts.com/es-modules/masters/highcharts.src.js';
 import 'https://code.highcharts.com/es-modules/masters/modules/exporting.src.js';
 import * as DSP from "./fir.js";
-const WASMPASS = "../../script/ave.wasm";
+const WASMPASS = "./ave.wasm";
 const SAMPLE = 250;
 const CHARTS = 4;
 const TiTLE = ['Magnitude', 'Magnitude[dB]', 'Phase', 'Group delay'];
@@ -49,26 +49,17 @@ const designRun = () => {
     wasm.exports.CalculateResponse();
 };
 const updateCharts = () => {
-    const bufferYDatas = new Array(CHARTS);
-    bufferYDatas[0] = new Array(SAMPLE);
-    bufferYDatas[1] = new Array(SAMPLE);
-    bufferYDatas[2] = new Array(SAMPLE);
-    bufferYDatas[3] = new Array(SAMPLE);
     for (let i = 0; i < SAMPLE; i++) {
-        bufferYDatas[0][i] = wasm.exports.ExportMagnitude(i);
-        charts[0].series[0].data[i].update({ y: bufferYDatas[0][i] });
+        charts[0].series[0].data[i].update({ y: wasm.exports.ExportMagnitude(i) });
     }
     for (let i = 0; i < SAMPLE; i++) {
-        bufferYDatas[1][i] = wasm.exports.ExportPower(i);
-        charts[1].series[0].data[i].update({ y: bufferYDatas[1][i] });
+        charts[1].series[0].data[i].update({ y: wasm.exports.ExportPower(i) });
     }
     for (let i = 0; i < SAMPLE; i++) {
-        bufferYDatas[2][i] = wasm.exports.ExportPhase(i);
-        charts[2].series[0].data[i].update({ y: bufferYDatas[2][i] });
+        charts[2].series[0].data[i].update({ y: wasm.exports.ExportPhase(i) });
     }
     for (let i = 0; i < SAMPLE; i++) {
-        bufferYDatas[3][i] = wasm.exports.ExportGroupDelay(i);
-        charts[3].series[0].data[i].update({ y: bufferYDatas[3][i] });
+        charts[3].series[0].data[i].update({ y: wasm.exports.ExportGroupDelay(i) });
     }
 };
 const updateCoeffcients = () => {
