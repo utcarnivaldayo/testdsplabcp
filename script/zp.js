@@ -14,11 +14,7 @@ const DIVID = ['magchart', 'magdbchart', 'phasechart', 'gdchart', 'coefchart', '
 const INPUTFILEDSCALINGID = 'a-0';
 const INPUTFILEDNUMERATORID = ['a-1-1', 'a-1-2', 'a-2-1', 'a-2-2'];
 const INPUTFILEDDENOMINATORID = ['b-1-1', 'b-1-2', 'b-2-1', 'b-2-2'];
-//const INPUTFILEDID: string = 'order';
 const DESIGNBUTTONID = 'design-button';
-//const FILTERTYPEID: string = 'filter-type';
-//const RESULTCOEFFICIENTS: string = 'result-coefficients';
-//const COEFFICIENTSTITLE: string = 'coefficients-title';
 let datas;
 let wasm;
 let charts;

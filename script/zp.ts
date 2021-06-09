@@ -16,11 +16,7 @@ const DIVID: string[] = ['magchart', 'magdbchart', 'phasechart', 'gdchart', 'coe
 const INPUTFILEDSCALINGID: string = 'a-0';
 const INPUTFILEDNUMERATORID: string[] = ['a-1-1', 'a-1-2', 'a-2-1', 'a-2-2'];
 const INPUTFILEDDENOMINATORID: string[] = ['b-1-1', 'b-1-2', 'b-2-1', 'b-2-2'];
-//const INPUTFILEDID: string = 'order';
 const DESIGNBUTTONID: string = 'design-button';
-//const FILTERTYPEID: string = 'filter-type';
-//const RESULTCOEFFICIENTS: string = 'result-coefficients';
-//const COEFFICIENTSTITLE: string = 'coefficients-title';
 let datas: number[][][];
 let wasm: WebAssembly.Instance;
 let charts: Highcharts.Chart[];
