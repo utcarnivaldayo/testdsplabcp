@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+.jumbotoron {
+    background-color: #e9ecef;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}

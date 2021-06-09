@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.title {
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.sidebyside {
+	display: flex;
+}
+
+.sidebyside img {
+	margin-top: 4px;
+	margin-right: 8px;
+}
+
+.row {
+	margin-bottom: 3rem;
+}
+
+.col-md-4 h3 {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
