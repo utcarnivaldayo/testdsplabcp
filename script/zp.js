@@ -55,6 +55,7 @@ const designRun = () => {
     else if (scaling > rangeMax) {
         scaling = rangeMax;
     }
+    wasm.exports.SetScaling(scaling);
     wasm.exports.CreateCoefficients(FILTERORDER, FILTERORDER);
     for (let i = 0; i < FILTERORDER; i++) {
         //numerator
@@ -67,7 +68,7 @@ const designRun = () => {
         else if (numerator[i] > rangeMax) {
             numerator[i] = rangeMax;
         }
-        wasm.exports.SetNumeraterCoefficients(numerator[i], i);
+        wasm.exports.SetNumeratorCoefficients(numerator[i], i);
         //denominator
         denominaor[i] = Number(document.getElementById(INPUTFILEDDENOMINATORID[i]).value);
         rangeMin = Number(document.getElementById(INPUTFILEDDENOMINATORID[i]).min);

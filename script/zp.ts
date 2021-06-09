@@ -76,7 +76,7 @@ const designRun = () => {
         } else if (numerator[i] > rangeMax) {
             numerator[i] = rangeMax;
         }
-        wasm.exports.SetNumeraterCoefficients(numerator[i], i);
+        wasm.exports.SetNumeratorCoefficients(numerator[i], i);
 
         //denominator
         denominaor[i] = Number((<HTMLInputElement>document.getElementById(INPUTFILEDDENOMINATORID[i])).value);
