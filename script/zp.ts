@@ -13,7 +13,7 @@ const TITLE : string[] = ['Magnitude', 'Magnitude[dB]', 'Phase', 'Group delay', 
 const YTITLE: string[] = ['Magnitude', 'Magnitude[dB]', 'Phase', 'Group delay', 'a_2, b_2', 'Im'];
 const XTITLE: string[] = ['Normalized frequency', 'Normalized frequency', 'Normalized frequency', 'Normalized frequency', 'a_1, b_1', 'Re']
 const DIVID: string[] = ['magchart', 'magdbchart', 'phasechart', 'gdchart', 'coefchart', 'zpchart'];
-const INPUTFILEDSCALINGID: string = 'scaling';
+const INPUTFILEDSCALINGID: string = 'a-0';
 const INPUTFILEDNUMERATORID: string[] = ['a-1-1', 'a-1-2', 'a-2-1', 'a-2-2'];
 const INPUTFILEDDENOMINATORID: string[] = ['b-1-1', 'b-1-2', 'b-2-1', 'b-2-2'];
 //const INPUTFILEDID: string = 'order';
@@ -62,6 +62,7 @@ const designRun = () => {
     } else if (scaling > rangeMax) {
         scaling = rangeMax;
     }
+    wasm.exports.SetScaling(scaling);
 
     wasm.exports.CreateCoefficients(FILTERORDER, FILTERORDER);
     for (let i: number = 0; i < FILTERORDER; i++) {
