@@ -171,6 +171,9 @@ window.onload = () => {
     }
     //coef
     charts[4] = Highcharts.chart(DIVID[4], {
+        chart: {
+            type: 'scatter'
+        },
         title: {
             text: TITLE[4]
         },
