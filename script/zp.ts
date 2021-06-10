@@ -1,6 +1,7 @@
 'use strict'
 
 import Highcharts from 'https://code.highcharts.com/es-modules/masters/highcharts.src.js';
+import MoreHighcharts from 'https://code.highcharts.com/highcharts-more.src.js';
 import 'https://code.highcharts.com/es-modules/masters/modules/exporting.src.js';
 import * as DSP from "./fir.js"
 
@@ -189,7 +190,7 @@ window.onload = () => {
     }
 
     //coef
-    charts[4] = Highcharts.chart(DIVID[4], {
+    charts[4] = MoreHighcharts.chart(DIVID[4], {
         chart: {
             type: 'scatter'
         },
