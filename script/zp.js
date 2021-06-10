@@ -12,8 +12,11 @@ const YTITLE = ['Magnitude', 'Magnitude[dB]', 'Phase', 'Group delay', 'a_2, b_2'
 const XTITLE = ['Normalized frequency', 'Normalized frequency', 'Normalized frequency', 'Normalized frequency', 'a_1, b_1', 'Re'];
 const DIVID = ['magchart', 'magdbchart', 'phasechart', 'gdchart', 'coefchart', 'zpchart'];
 const INPUTFILEDSCALINGID = 'a-0';
+const RANGESCALINGID = 'r-a-0';
 const INPUTFILEDNUMERATORID = ['a-1-1', 'a-1-2', 'a-2-1', 'a-2-2'];
 const INPUTFILEDDENOMINATORID = ['b-1-1', 'b-1-2', 'b-2-1', 'b-2-2'];
+const RANGENUMERATORID = ['r-a-1-1', 'r-a-1-2', 'r-a-2-1', 'r-a-2-2'];
+const RANGEDENOMINATORID = ['r-b-1-1', 'r-b-1-2', 'r-b-2-1', 'r-b-2-2'];
 const DESIGNBUTTONID = 'design-button';
 let datas;
 let wasm;
@@ -238,12 +241,6 @@ window.onload = () => {
                     enabled: true
                 }
             }
-        },
-        function(chart) {
-            chart.renderer.circle(0, 0, 100).attr({
-                stroke: 'black',
-                'stroke-width': 1
-            }).add();
         }
     });
     WasmInit(WASMPASS);

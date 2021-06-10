@@ -14,8 +14,11 @@ const YTITLE: string[] = ['Magnitude', 'Magnitude[dB]', 'Phase', 'Group delay', 
 const XTITLE: string[] = ['Normalized frequency', 'Normalized frequency', 'Normalized frequency', 'Normalized frequency', 'a_1, b_1', 'Re']
 const DIVID: string[] = ['magchart', 'magdbchart', 'phasechart', 'gdchart', 'coefchart', 'zpchart'];
 const INPUTFILEDSCALINGID: string = 'a-0';
+const RANGESCALINGID: string = 'r-a-0';
 const INPUTFILEDNUMERATORID: string[] = ['a-1-1', 'a-1-2', 'a-2-1', 'a-2-2'];
 const INPUTFILEDDENOMINATORID: string[] = ['b-1-1', 'b-1-2', 'b-2-1', 'b-2-2'];
+const RANGENUMERATORID: string[] = ['r-a-1-1', 'r-a-1-2', 'r-a-2-1', 'r-a-2-2'];
+const RANGEDENOMINATORID: string[] = ['r-b-1-1', 'r-b-1-2', 'r-b-2-1', 'r-b-2-2'];
 const DESIGNBUTTONID: string = 'design-button';
 let datas: number[][][];
 let wasm: WebAssembly.Instance;
@@ -258,12 +261,6 @@ window.onload = () => {
                     enabled: true
                 }
             }
-        },
-        function(chart: Highcharts.Chart) {
-            chart.renderer.circle(0, 0, 100).attr({
-                stroke: 'black',
-                'stroke-width': 1
-            }).add();
         }
     });
 
