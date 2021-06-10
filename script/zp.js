@@ -198,7 +198,13 @@ window.onload = () => {
             {
                 name: 'Stability triangle',
                 type: 'polygon',
-                data: [[-2.0, 1.0], [0.0, -1.0], [2.0, 1.0]]
+                data: [[-2.0, 1.0], [0.0, -1.0], [2.0, 1.0]],
+                color: Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0.5).get(),
+                enableMouseTracking: false,
+                accessibility: {
+                    exposeAsGroupOnly: true,
+                    description: 'Target ranges in an upwards trending diagonal from 149 to 180 on the x axis, and 42 to 77 on the y axis.'
+                }
             }
         ],
         plotOptions: {
