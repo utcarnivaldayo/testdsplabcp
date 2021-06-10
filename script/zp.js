@@ -1,6 +1,5 @@
 'use strict';
 import Highcharts from 'https://code.highcharts.com/es-modules/masters/highcharts.src.js';
-import MoreHighcharts from 'https://code.highcharts.com/highcharts-more.src.js';
 import 'https://code.highcharts.com/es-modules/masters/modules/exporting.src.js';
 import * as DSP from "./fir.js";
 const WASMPASS = "../../script/zp.wasm";
@@ -171,7 +170,7 @@ window.onload = () => {
         });
     }
     //coef
-    charts[4] = MoreHighcharts.chart(DIVID[4], {
+    charts[4] = Highcharts.chart(DIVID[4], {
         chart: {
             type: 'scatter'
         },
@@ -191,24 +190,11 @@ window.onload = () => {
         series: [
             {
                 name: 'Numerator',
-                type: 'scatter',
                 data: coefficients[0]
             },
             {
                 name: 'Denominator',
-                type: 'scatter',
                 data: coefficients[1]
-            },
-            {
-                name: 'Stability triangle',
-                type: 'polygon',
-                data: [[-2.0, 1.0], [0.0, -1.0], [2.0, 1.0]],
-                color: Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0.5).get(),
-                enableMouseTracking: false,
-                accessibility: {
-                    exposeAsGroupOnly: true,
-                    description: 'Target ranges in an upwards trending diagonal from 149 to 180 on the x axis, and 42 to 77 on the y axis.'
-                }
             }
         ],
         plotOptions: {
