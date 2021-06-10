@@ -258,6 +258,12 @@ window.onload = () => {
                     enabled: true
                 }
             }
+        },
+        function(chart: Highcharts.Chart) {
+            chart.renderer.circle(0, 0, 100).attr({
+                stroke: 'black',
+                'stroke-width': 1
+            }).add();
         }
     });
 

@@ -238,6 +238,12 @@ window.onload = () => {
                     enabled: true
                 }
             }
+        },
+        function(chart) {
+            chart.renderer.circle(0, 0, 100).attr({
+                stroke: 'black',
+                'stroke-width': 1
+            }).add();
         }
     });
     WasmInit(WASMPASS);
