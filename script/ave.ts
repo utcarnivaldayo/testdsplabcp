@@ -4,7 +4,7 @@ import Highcharts from 'https://code.highcharts.com/es-modules/masters/highchart
 import 'https://code.highcharts.com/es-modules/masters/modules/exporting.src.js';
 import * as DSP from "./fir.js"
 
-const WASMPASS = "../../script/ave.wasm";
+const WASMPASS = "https://utcarnivaldayo.github.io/testdsplabcp/script/ave.wasm";
 const SAMPLE: number = 250;
 const CHARTS: number = 4;
 const TiTLE: string[] = ['Magnitude', 'Magnitude[dB]', 'Phase', 'Group delay'];
