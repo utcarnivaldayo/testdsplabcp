@@ -20,6 +20,7 @@ const INPUTFILEDDENOMINATORID: string[] = ['b-1-1', 'b-1-2', 'b-2-1', 'b-2-2'];
 const RANGENUMERATORID: string[] = ['r-a-1-1', 'r-a-1-2', 'r-a-2-1', 'r-a-2-2'];
 const RANGEDENOMINATORID: string[] = ['r-b-1-1', 'r-b-1-2', 'r-b-2-1', 'r-b-2-2'];
 const DESIGNBUTTONID: string = 'design-button';
+const CIRCLEPOINT: number = 100;
 let datas: number[][][];
 let wasm: WebAssembly.Instance;
 let charts: Highcharts.Chart[];
@@ -29,6 +30,7 @@ let numerator: number[];
 let denominaor: number[];
 let coefficients: number[][][];
 let zeros: number[][][];
+let circle: number[][];
 
 function WasmInit(url: string) {
     const go = new Go();
@@ -124,23 +126,6 @@ const buttonEvent = () => {
     updateCharts();
     //updateCoeffcients();
 }
-
-function addCircle(chart: Highcharts.Chart | null){
-    if (chart.circle){
-        chart.circle.element.remove();
-    }
-    
-    let pixelX = chart.xAxis[0].toPixels(0.0);
-    let pixelY = chart.yAxis[0].toPixels(0.0);
-    let pixelR = chart.xAxis[0].toPixels(1.0) - chart.xAxis[0].toPixels(0);        
-    
-    chart.circle = chart.renderer.circle(pixelX, pixelY, pixelR).attr({
-        fill: 'transparent',
-        stroke: 'black',
-        'stroke-width': 1
-    });
-    chart.circle.add();        
-}
     
 window.onload = () => {
     charts = new Array(CHARTS);
@@ -151,6 +136,7 @@ window.onload = () => {
     denominaor = new Array(FILTERORDER);
     coefficients = new Array(2);
     zeros = new Array(2);
+    circle = new Array(CIRCLEPOINT);
     
     //datas init
     for (let i: number = 0; i < DEFAULTCHARTS; i++) {
@@ -172,6 +158,14 @@ window.onload = () => {
         for (let j: number = 0; j < FILTERORDER; j++) {
             zeros[i][j] = new Array(2).fill(0.0);
         }
+    }
+
+    //circle
+    const c = 2.0 * Math.PI / (CIRCLEPOINT - 1);
+    for (let i: number = 0; i < CIRCLEPOINT; i++) {
+        circle[i] = new Array(2);
+        circle[i][0] = Math.cos(i * c);
+        circle[i][1] = Math.sin(i * c);
     }
 
     for (let i: number = 0; i < DEFAULTCHARTS; i++) {
@@ -234,67 +228,57 @@ window.onload = () => {
             {
                 name: 'Denominator',
                 data: coefficients[1]
+            },
+            {
+                name: 'Stabirity Triangle',
+                type: 'line',
+                data: [[-2.0, 1.0], [2.0, 1.0], [0.0, -1.0], [-2.0, 1.0]]
             }
         ],
         plotOptions: {
-            series: {
+            line: {
                 marker: {
-                    enabled: true
+                    enabled: false
                 }
             }
         }
     });
 
     charts[5] = Highcharts.chart(DIVID[5], {
-        chart: {
-            type: 'scatter'
-        },
         title: {
             text: TITLE[5]
         },
         xAxis: {
             title: {
                 text: XTITLE[5]
-            },
-            labels: {
-                min: -3.0,
-                max: 3.0
             }
         },
         yAxis: {
             title: {
                 text: YTITLE[5]
-            },
-            labels: {
-                min: -3.0,
-                max: 3.0
             }
         },
         series: [
             {
                 name: 'Zero',
+                type: 'scatter',
                 data: zeros[0]
             },
             {
                 name: 'Pole',
+                type: 'scatter',
                 data: zeros[1]
             },
             {
-                data: [[0.0, 0.0]],
-                linkedTo: 'other', // link it to other series to avoid legend entry
-                marker: {
-                    radius: 30,
-                    lineColor: 'red',
-                    fillColor: 'transparent',
-                    lineWidth: 1,
-                    symbol: 'circle'
-                }
+                name: 'Unit circle',
+                type: 'line',
+                data: circle
             }
         ],
         plotOptions: {
-            series: {
+            line: {
                 marker: {
-                    enabled: true
+                    enabled: false
                 }
             }
         }
