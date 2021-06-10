@@ -110,6 +110,20 @@ const buttonEvent = () => {
     updateCharts();
     //updateCoeffcients();
 };
+function addCircle(chart) {
+    if (chart.circle) {
+        chart.circle.element.remove();
+    }
+    let pixelX = chart.xAxis[0].toPixels(0.0);
+    let pixelY = chart.yAxis[0].toPixels(0.0);
+    let pixelR = chart.xAxis[0].toPixels(1.0) - chart.xAxis[0].toPixels(0);
+    chart.circle = chart.renderer.circle(pixelX, pixelY, pixelR).attr({
+        fill: 'transparent',
+        stroke: 'black',
+        'stroke-width': 1
+    });
+    chart.circle.add();
+}
 window.onload = () => {
     var _a;
     charts = new Array(CHARTS);
@@ -218,11 +232,19 @@ window.onload = () => {
         xAxis: {
             title: {
                 text: XTITLE[5]
+            },
+            labels: {
+                min: -3.0,
+                max: 3.0
             }
         },
         yAxis: {
             title: {
                 text: YTITLE[5]
+            },
+            labels: {
+                min: -3.0,
+                max: 3.0
             }
         },
         series: [
@@ -233,6 +255,17 @@ window.onload = () => {
             {
                 name: 'Pole',
                 data: zeros[1]
+            },
+            {
+                data: [[0.0, 0.0]],
+                linkedTo: 'other',
+                marker: {
+                    radius: 30,
+                    lineColor: 'red',
+                    fillColor: 'transparent',
+                    lineWidth: 1,
+                    symbol: 'circle'
+                }
             }
         ],
         plotOptions: {
