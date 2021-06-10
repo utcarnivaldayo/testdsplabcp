@@ -172,7 +172,7 @@ window.onload = () => {
     //coef
     charts[4] = Highcharts.chart(DIVID[4], {
         chart: {
-            type: 'scatter'
+            type: 'polygon'
         },
         title: {
             text: TITLE[4]
@@ -190,15 +190,16 @@ window.onload = () => {
         series: [
             {
                 name: 'Numerator',
+                type: 'scatter',
                 data: coefficients[0]
             },
             {
                 name: 'Denominator',
+                type: 'scatter',
                 data: coefficients[1]
             },
             {
                 name: 'Stability triangle',
-                type: 'polygon',
                 data: [[-2.0, 1.0], [0.0, -1.0], [2.0, 1.0]]
             }
         ],
