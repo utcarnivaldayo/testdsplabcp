@@ -195,6 +195,11 @@ window.onload = () => {
             {
                 name: 'Denominator',
                 data: coefficients[1]
+            },
+            {
+                name: 'Stability triangle',
+                type: 'polygon',
+                data: [[-2.0, 1.0], [0.0, -1.0], [2.0, 1.0]]
             }
         ],
         plotOptions: {
@@ -224,11 +229,11 @@ window.onload = () => {
         },
         series: [
             {
-                name: 'Numerator',
+                name: 'Zero',
                 data: zeros[0]
             },
             {
-                name: 'Denominator',
+                name: 'Pole',
                 data: zeros[1]
             }
         ],
