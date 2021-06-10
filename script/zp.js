@@ -171,9 +171,6 @@ window.onload = () => {
     }
     //coef
     charts[4] = Highcharts.chart(DIVID[4], {
-        chart: {
-            type: 'polygon'
-        },
         title: {
             text: TITLE[4]
         },
@@ -200,6 +197,7 @@ window.onload = () => {
             },
             {
                 name: 'Stability triangle',
+                type: 'polygon',
                 data: [[-2.0, 1.0], [0.0, -1.0], [2.0, 1.0]]
             }
         ],
