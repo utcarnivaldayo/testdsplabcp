@@ -2,7 +2,7 @@
 import Highcharts from 'https://code.highcharts.com/es-modules/masters/highcharts.src.js';
 import 'https://code.highcharts.com/es-modules/masters/modules/exporting.src.js';
 import * as DSP from "./fir.js";
-const WASMPASS = "../../script/zp.wasm";
+const WASMPASS = "https://utcarnivaldayo.github.io/testdsplabcp/script/zp.wasm";
 const SAMPLE = 250;
 const CHARTS = 6;
 const DEFAULTCHARTS = 4;
